@@ -11,11 +11,12 @@ testSuite:
           MockAction("Get_a_record_-_Valid_Id", true, {name:"fred"});
           MockAction("Update_Account_-_Invalid_Id", true);
           BuildTest();
-          LoadWorkflow("PowerAutomateMockUpSampleFlow.json");
+          LoadWorkflow("PowerAutomateMockUpSampleFlow.json"));
           // Act
-          TriggerWorkflow({body:{name: "Alice Bob", accountId: GUID()}})
+          Set(Result,TriggerWorkflow({body:{name: "Alice Bob", accountId: GUID()}}));
           // Assert
-          Assert("RanToCompletion", Result.TaskStatus)
+          Assert("RanToCompletion", Result.TaskStatus);
+          Verify("Get_a_record_-_Valid_Id")
           
 testSettings:
   locale: "en-US"
