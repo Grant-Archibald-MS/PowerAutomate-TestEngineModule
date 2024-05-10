@@ -1,0 +1,6 @@
+[submodule "PowerApps-TestEngine"]
+	path = PowerApps-TestEngine
+	url = https://github.com/Grant-Archibald-MS/PowerApps-TestEngine.git
+[submodule "PowerAutomateMockUp"]
+	path = PowerAutomateMockUp
+	url = https://github.com/Grant-Archibald-MS/PowerAutomateMockUp
