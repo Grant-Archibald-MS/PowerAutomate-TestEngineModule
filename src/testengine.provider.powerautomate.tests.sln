@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testengine.provider.powerautomate.tests", "testengine.provider.powerautomate.tests\testengine.provider.powerautomate.tests.csproj", "{28332149-8D87-49D6-AC89-FA478103E7AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testengine.provider.powerautomate", "testengine.provider.powerautomate\testengine.provider.powerautomate.csproj", "{DE192E20-9033-43BA-B137-E405CB89136C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerAutomateMockUp", "..\PowerAutomateMockUp\PowerAutomateMockUp\PowerAutomateMockUp.csproj", "{717276A9-BCC3-483C-9A2F-68D7C465AA80}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "..\PowerAutomateMockUp\Test\Test.csproj", "{B1CFBF27-83EE-4F4C-9823-B2825378BBDB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerAppsTestEngine", "..\PowerApps-TestEngine\src\PowerAppsTestEngine\PowerAppsTestEngine.csproj", "{C49C64C5-9CEC-4FF0-9E3E-89EA9F4E9C67}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testengineine.module.powerautomate", "testengineine.module.powerautomate\testengineine.module.powerautomate.csproj", "{1C5B6C1F-9698-4494-86DE-6E916B0B9F02}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testengine.module.powerautomate.tests", "testengine.module.powerautomate.tests\testengine.module.powerautomate.tests.csproj", "{A26B5B6A-0F22-4681-BBD1-7606A3DAD972}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.PowerApps.TestEngine.Tests", "..\PowerApps-TestEngine\src\Microsoft.PowerApps.TestEngine.Tests\Microsoft.PowerApps.TestEngine.Tests.csproj", "{EA890D35-2E7D-4957-85F7-ED244EF80D76}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testengine.provider.canvas", "..\PowerApps-TestEngine\src\testengine.provider.canvas\testengine.provider.canvas.csproj", "{AC20A452-4B15-4700-AD35-43F559C5ACE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.PowerApps.TestEngine", "..\PowerApps-TestEngine\src\Microsoft.PowerApps.TestEngine\Microsoft.PowerApps.TestEngine.csproj", "{823F7E9D-CFC2-4428-AF63-1153B073185A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28332149-8D87-49D6-AC89-FA478103E7AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28332149-8D87-49D6-AC89-FA478103E7AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28332149-8D87-49D6-AC89-FA478103E7AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28332149-8D87-49D6-AC89-FA478103E7AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE192E20-9033-43BA-B137-E405CB89136C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE192E20-9033-43BA-B137-E405CB89136C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE192E20-9033-43BA-B137-E405CB89136C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE192E20-9033-43BA-B137-E405CB89136C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{717276A9-BCC3-483C-9A2F-68D7C465AA80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{717276A9-BCC3-483C-9A2F-68D7C465AA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{717276A9-BCC3-483C-9A2F-68D7C465AA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{717276A9-BCC3-483C-9A2F-68D7C465AA80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1CFBF27-83EE-4F4C-9823-B2825378BBDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1CFBF27-83EE-4F4C-9823-B2825378BBDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1CFBF27-83EE-4F4C-9823-B2825378BBDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1CFBF27-83EE-4F4C-9823-B2825378BBDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C49C64C5-9CEC-4FF0-9E3E-89EA9F4E9C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C49C64C5-9CEC-4FF0-9E3E-89EA9F4E9C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C49C64C5-9CEC-4FF0-9E3E-89EA9F4E9C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C49C64C5-9CEC-4FF0-9E3E-89EA9F4E9C67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C5B6C1F-9698-4494-86DE-6E916B0B9F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C5B6C1F-9698-4494-86DE-6E916B0B9F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C5B6C1F-9698-4494-86DE-6E916B0B9F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C5B6C1F-9698-4494-86DE-6E916B0B9F02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A26B5B6A-0F22-4681-BBD1-7606A3DAD972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A26B5B6A-0F22-4681-BBD1-7606A3DAD972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A26B5B6A-0F22-4681-BBD1-7606A3DAD972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A26B5B6A-0F22-4681-BBD1-7606A3DAD972}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA890D35-2E7D-4957-85F7-ED244EF80D76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA890D35-2E7D-4957-85F7-ED244EF80D76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA890D35-2E7D-4957-85F7-ED244EF80D76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA890D35-2E7D-4957-85F7-ED244EF80D76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC20A452-4B15-4700-AD35-43F559C5ACE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC20A452-4B15-4700-AD35-43F559C5ACE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC20A452-4B15-4700-AD35-43F559C5ACE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC20A452-4B15-4700-AD35-43F559C5ACE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{823F7E9D-CFC2-4428-AF63-1153B073185A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{823F7E9D-CFC2-4428-AF63-1153B073185A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{823F7E9D-CFC2-4428-AF63-1153B073185A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{823F7E9D-CFC2-4428-AF63-1153B073185A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0847F5CA-6D9E-4ADA-A9BA-BD9F9DF9609D}
+	EndGlobalSection
+EndGlobal
