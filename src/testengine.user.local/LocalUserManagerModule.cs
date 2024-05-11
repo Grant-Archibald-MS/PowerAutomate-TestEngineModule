@@ -38,7 +38,7 @@ namespace testengine.user.environment
             ISingleTestInstanceState singleTestInstanceState,
             IEnvironmentVariable environmentVariable)
         {
-            
+            await Task.CompletedTask;
         }
 
     }

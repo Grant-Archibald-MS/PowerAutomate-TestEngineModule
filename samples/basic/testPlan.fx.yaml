@@ -17,10 +17,12 @@ testSuite:
           // Assert
           Assert("RanToCompletion", Result.TaskStatus)
           Verify("Get_a_record_-_Valid_Id")
-          
+
 testSettings:
   locale: "en-US"
   recordVideo: true
+  extensionModules:
+    enable: true
   browserConfigurations:
     - browser: Chromium
 

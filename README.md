@@ -1,10 +1,10 @@
 # Power Automate - Test Engine Module
 
-This repository provides a proof of concept implementation of unit testing for Power Automate Cloud flows making use of Test Engine.
+This repository provides a proof of concept implementation of unit testing for Power Automate Cloud flows making use of extensions to the Power Apps Test Engine.
 
 Key concepts demonstrated by this sample:
 
-- Make use of extensibility model of Test Engine to implement a Power AUtomate unit test provider
+- Make use of extensibility model of Power Apps Test Engine to implement a Power Automate unit test provider
 
 - Implement new Power FX actions that allow mocking of automation actions and triggers
   
@@ -38,7 +38,7 @@ dotnet build
 ```bash
 cd ..
 cd samples\basic
-dotnet run ..\PowerAppsTestEngin\bin\PowerAppsTestEngine\PowerAppsTestEngine.dll -i testPlan2.fx.yaml
+dotnet ..\..\PowerAppsTestEngin\bin\PowerAppsTestEngine\PowerAppsTestEngine.dll -i testPlan2.fx.yaml -t 00000000-0000-0000-0000-000000000000 -e 00000000-0000-0000-0000-000000000000 -p powerautomate -u local 
 ```
 
 ## Read More

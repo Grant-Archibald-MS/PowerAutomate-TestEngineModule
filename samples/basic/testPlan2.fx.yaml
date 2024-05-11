@@ -11,7 +11,11 @@ testSuite:
           MockAction("Update_Account_-_Invalid_Id", true);
           BuildTest();
           OpenWorkflow("PowerAutomateMockUpSampleFlow.json");
-          TriggerWorkflow("{body:{name: 'Alice Bob', accountId: 1}}")
+          With( {
+              results: TriggerWorkflow("{'body':{'name': 'Alice Bob', 'accountId': 1}}") 
+            },
+            Assert(2, results.NumberOfExecutedActions)
+          )
 testSettings:
   locale: "en-US"
   recordVideo: true

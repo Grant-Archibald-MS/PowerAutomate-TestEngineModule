@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Primitives;
+using System.Text.Json.Nodes;
+using System.Text.Json;
 
 namespace testengine.module
 {
@@ -21,87 +23,93 @@ namespace testengine.module
 
         public TriggerWorkflowFunction(PowerAutomateTestState state, ILogger logger)
             // Function name, start with return type then arguments
-            : base("TriggerWorkflow", FormulaType.Blank, StringType.String)
+            : base("TriggerWorkflow", RecordType.Empty().Add(new NamedFormulaType("NumberOfExecutedActions", FormulaType.Number)), StringType.String)
         {
             _state = state;
             _logger = logger;
         }
 
-        public BlankValue Execute(StringValue source)
+        public RecordValue Execute(StringValue json)
         {
             _logger.LogInformation("------------------------------\n\n" +
                 "Executing OpenWorkflow function.");
 
             var values = new Dictionary<string, ValueContainer>();
 
-            var data = source.ToObject();
+            var formattedJson = json.Value.Replace("'", "\"");
 
-            // TODO
-            //var fields = source.GetFieldsAsync(new CancellationToken()).ToEnumerable();
+            if ( string.IsNullOrEmpty( formattedJson ) )
+            {
+                throw new FormatException("Null json provided");
+            }
 
-            //foreach ( var field in fields )
-            //{
-            //    AddField(values, String.Empty, field.Name, field.Value);
-            //}
+            JsonNode value = JsonNode.Parse(formattedJson);
 
-            //
-            var result = _state.FlowRunner?.Trigger(new ValueContainer(values));
+            AddField(values, value, "");
+
+            var result = _state.FlowRunner?.Trigger(new ValueContainer(values)).Result;
 
             _logger.LogInformation("Successfully finished executing TriggerWorkflow function.");
 
-            return FormulaValue.NewBlank();
+            return RecordValue.NewRecordFromFields(
+                new NamedValue("NumberOfExecutedActions", FormulaValue.New(result?.NumberOfExecutedActions))
+                );
         }
 
-        private void AddField(Dictionary<string, ValueContainer> values, string parent, string name, FormulaValue value)
+        private void AddField(Dictionary<string, ValueContainer> values, JsonNode? node, string parent = "")
         {
-            var fieldName = String.Empty;
-            if ( !String.IsNullOrEmpty(parent) && !String.IsNullOrEmpty(name) )
+            if ( node == null )
             {
-                fieldName = $"{parent}/{name}";
-            } else
+                return;
+            }
+
+            if ( node is JsonObject )
             {
-                if (!String.IsNullOrEmpty(parent) && String.IsNullOrEmpty(name))
+                var nodeObject = node as JsonObject;
+                var items = nodeObject?.GetEnumerator();
+                if ( items != null )
                 {
-                    fieldName = parent;
-                } else
-                {
-                    fieldName = name;
+                    while (items.MoveNext())
+                    {
+                        var item = items.Current;
+                        if (item.Value is JsonValue)
+                        {
+                            var value = (JsonValue)item.Value;
+
+                            var key = item.Key;
+                            if ( ! String.IsNullOrEmpty(parent))
+                            {
+                                key = parent + "/" + key;
+                            }
+
+                            // TODO handle other type
+                            switch ( value.GetValue<JsonElement>().ValueKind )
+                            {
+                                case JsonValueKind.String:
+                                    values.Add(key, new ValueContainer(value.GetValue<string>()));
+                                    break;
+                                case JsonValueKind.True:
+                                case JsonValueKind.False:
+                                    values.Add(key, new ValueContainer(value.GetValue<bool>()));
+                                    break;
+                                case JsonValueKind.Number:
+                                    values.Add(key, new ValueContainer(value.GetValue<int>()));
+                                    break;
+                            }
+                        }
+                        if (item.Value is JsonObject)
+                        {
+                            var key = item.Key;
+                            if (!String.IsNullOrEmpty(parent))
+                            {
+                                key = parent + "/" + key;
+                            }
+                            AddField(values, item.Value, key);
+                        }
+                    }
                 }
-            }
-
-            if (value is RecordValue)
-            {
-                AddField(values, fieldName, string.Empty, value as RecordValue);
-            }
-            if ( value is StringValue)
-            {
-                values.Add(fieldName, new ValueContainer((value as StringValue)?.Value));
-            }
-            if (value is BooleanValue)
-            {
-                values.Add(fieldName, new ValueContainer((value as BooleanValue)?.Value));
-            }
-            if (value is NumberValue)
-            {
-                values.Add(fieldName, new ValueContainer((value as BooleanValue)?.Value));
-            }
-            if (value is DateTimeValue)
-            {
-                values.Add(fieldName, new ValueContainer((value as DateTimeValue)?.Value));
-            }
-            if (value is DateValue)
-            {
-                values.Add(fieldName, new ValueContainer((value as DateValue)?.Value));
-            }
+            }   
         }
 
-        private void AddField(Dictionary<string, ValueContainer> values, string parent, string name, RecordValue? recordValue)
-        {
-            var fields = recordValue?.GetFieldsAsync(new CancellationToken()).ToEnumerable();
-            foreach (var recordField in fields)
-            {
-                AddField(values, parent, recordField.Name, recordField.Value);
-            }
-        }
     }
 }

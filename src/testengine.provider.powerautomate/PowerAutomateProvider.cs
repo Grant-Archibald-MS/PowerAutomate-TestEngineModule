@@ -38,7 +38,8 @@ namespace testengineine.model
 
         public Task<object> GetDebugInfo()
         {
-            return Task.FromResult((object)new { DebugInfoNotImplemented = true });
+            // If required return an ExpandoObject
+            return Task.FromResult((object)null);
         }
 
         public int GetItemCount(ItemPath itemPath)

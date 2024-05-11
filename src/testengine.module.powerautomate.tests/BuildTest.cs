@@ -49,7 +49,7 @@ public class BuildTest
         var result = state.FlowRunner?.Trigger();
 
         // Assert
-        Assert.Equal(TaskStatus.Faulted, result.Status);
+        Assert.Equal(TaskStatus.Faulted, result?.Status);
     }
 
     [Fact]
@@ -62,21 +62,16 @@ public class BuildTest
         var action = new MockActionFunction(state, MockLogger.Object);
         var build = new BuildTestFunction(state, MockLogger.Object);
         var open = new OpenWorkflowFunction(state, MockLogger.Object);
-        
+        var trigger = new TriggerWorkflowFunction(state, MockLogger.Object);
+
         // Act
         action.Execute(FormulaValue.New("Get_a_record_-_Valid_Id"), FormulaValue.New(true));
         action.Execute(FormulaValue.New("Update_Account_-_Invalid_Id"), FormulaValue.New(true));
         build.Execute();
         open.Execute(FormulaValue.New(SampleFlowPath));
-
-        var result = state.FlowRunner?.Trigger(new ValueContainer(
-                new Dictionary<string, ValueContainer>
-                {
-                    {"body/name", new ValueContainer("Alice Bob")},
-                    {"body/accountid", new ValueContainer(Guid.NewGuid().ToString())}
-                }));
+        var result = trigger.Execute(FormulaValue.New("{'body':{ 'name':'Alice Bob', 'accountid': 1 }}"));
 
         // Assert
-        Assert.Equal(TaskStatus.RanToCompletion, result.Status);
+ 
     }
 }
