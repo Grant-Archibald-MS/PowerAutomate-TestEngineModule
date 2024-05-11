@@ -36,9 +36,8 @@ dotnet build
 3. Run sample test
 
 ```bash
-cd ..
-cd samples\basic
-dotnet ..\..\PowerAppsTestEngin\bin\PowerAppsTestEngine\PowerAppsTestEngine.dll -i testPlan2.fx.yaml -t 00000000-0000-0000-0000-000000000000 -e 00000000-0000-0000-0000-000000000000 -p powerautomate -u local 
+cd ..\samples\basic
+dotnet ..\..\PowerApps-TestEngine\bin\Debug\PowerAppsTestEngine\PowerAppsTestEngine.dll -i testPlan2.fx.yaml -t 00000000-0000-0000-0000-000000000000 -e 00000000-0000-0000-0000-000000000000 -p powerautomate -u local
 ```
 
 ## Read More
