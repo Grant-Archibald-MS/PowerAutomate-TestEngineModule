@@ -17,4 +17,12 @@
 		<PackageReference Include="Microsoft.PowerFx.Interpreter" Version="1.2.0" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
   </ItemGroup>
+
+	<ItemGroup>
+		<MySourceFiles Include="bin\$(configuration)\net6.0\testengine.module.powerautomate.dll;..\..\PowerAutomateMockUp\PowerAutomateMockUp\bin\Debug\net462\Sprache.dll" />
+	</ItemGroup>
+
+	<Target Name="CopyFiles" AfterTargets="AfterBuild">
+		<Copy SourceFiles="@(MySourceFiles)" DestinationFolder="..\..\PowerApps-TestEngine\bin\$(configuration)\PowerAppsTestEngine" />
+	</Target>
 </Project>

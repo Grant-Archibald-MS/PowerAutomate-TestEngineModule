@@ -17,7 +17,8 @@ namespace testengine.module
         public Func<string,string> GetFileContent = name => File.ReadAllText(name);
 
         public OpenWorkflowFunction(PowerAutomateTestState state, ILogger logger)
-            : base("OpenWorkflow", FormulaType.String, FormulaType.Blank)
+            // Function name, start with return type then arguments
+            : base("OpenWorkflow", FormulaType.Blank, FormulaType.String)
         {
             _state = state;
             _logger = logger;

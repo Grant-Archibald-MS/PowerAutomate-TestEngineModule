@@ -12,7 +12,7 @@ Key concepts demonstrated by this sample:
   
 - Assert the results of process and workflow results
 
-### Prerequisites for building module
+## Prerequisites for building module
 
 1. Install [.NET Core 6.0.x SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
@@ -29,15 +29,16 @@ git clone --recurse-submodules https://github.com/Grant-Archibald-MS/PowerAutoma
 2. Build the module
 
 ```bash
-cd src
+cd PowerAutomate-TestEngineModule\src
 dotnet build
 ```
 
 3. Run sample test
 
 ```bash
-cd ..\PowerApps-TestEngine\bin\Debug\PowerAppsTestEngine
-dotnet run PowerAppsTestEngine.dll -i ..\..\..\..\samples\basic\testPlan.fx.yaml
+cd ..
+cd samples\basic
+dotnet run ..\PowerAppsTestEngin\bin\PowerAppsTestEngine\PowerAppsTestEngine.dll -i testPlan2.fx.yaml
 ```
 
 ## Read More

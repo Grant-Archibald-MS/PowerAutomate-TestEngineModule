@@ -38,6 +38,8 @@ namespace testengine.module
             config.AddFunction(new BuildTestFunction(state, logger));
             config.AddFunction(new OpenWorkflowFunction(state, logger));
             config.AddFunction(new MockActionFunction(state, logger));
+            config.AddFunction(new TriggerWorkflowFunction(state, logger));
+            
             logger.LogInformation("Registered BuildTest()");
         }
 

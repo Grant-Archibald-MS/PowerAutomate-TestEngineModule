@@ -32,4 +32,12 @@
 		<ProjectReference Include="..\..\PowerApps-TestEngine\src\Microsoft.PowerApps.TestEngine\Microsoft.PowerApps.TestEngine.csproj" />
 		<ProjectReference Include="..\..\PowerAutomateMockUp\PowerAutomateMockUp\PowerAutomateMockUp.csproj" />
 	</ItemGroup>
+	
+	<ItemGroup>
+		<MySourceFiles Include="bin\$(configuration)\net6.0\testengine.provider.powerautomate.dll;bin\$(configuration)\net6.0\PowerAutomateMockUp.dll" />
+	</ItemGroup>
+
+	<Target Name="CopyFiles" AfterTargets="AfterBuild">
+		<Copy SourceFiles="@(MySourceFiles)" DestinationFolder="..\..\PowerApps-TestEngine\bin\$(configuration)\PowerAppsTestEngine" />
+	</Target>
 </Project>

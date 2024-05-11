@@ -11,6 +11,7 @@ using Microsoft.Extensions.Primitives;
 
 namespace testengine.module
 {
+    // Must end in Function
     public class TriggerWorkflowFunction : ReflectionFunction
     {
         private readonly PowerAutomateTestState _state;
@@ -19,25 +20,29 @@ namespace testengine.module
         public Func<string,string> GetFileContent = name => File.ReadAllText(name);
 
         public TriggerWorkflowFunction(PowerAutomateTestState state, ILogger logger)
-            : base("TriggerWorkflow", RecordType.UntypedObject, FormulaType.Blank)
+            // Function name, start with return type then arguments
+            : base("TriggerWorkflow", FormulaType.Blank, StringType.String)
         {
             _state = state;
             _logger = logger;
         }
 
-        public BlankValue Execute(RecordValue source)
+        public BlankValue Execute(StringValue source)
         {
             _logger.LogInformation("------------------------------\n\n" +
                 "Executing OpenWorkflow function.");
 
             var values = new Dictionary<string, ValueContainer>();
 
-            var fields = source.GetFieldsAsync(new CancellationToken()).ToEnumerable();
+            var data = source.ToObject();
 
-            foreach ( var field in fields )
-            {
-                AddField(values, String.Empty, field.Name, field.Value);
-            }
+            // TODO
+            //var fields = source.GetFieldsAsync(new CancellationToken()).ToEnumerable();
+
+            //foreach ( var field in fields )
+            //{
+            //    AddField(values, String.Empty, field.Name, field.Value);
+            //}
 
             //
             var result = _state.FlowRunner?.Trigger(new ValueContainer(values));

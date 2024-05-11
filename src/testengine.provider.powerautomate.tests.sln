@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "..\PowerAutomateMoc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerAppsTestEngine", "..\PowerApps-TestEngine\src\PowerAppsTestEngine\PowerAppsTestEngine.csproj", "{C49C64C5-9CEC-4FF0-9E3E-89EA9F4E9C67}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testengineine.module.powerautomate", "testengineine.module.powerautomate\testengineine.module.powerautomate.csproj", "{1C5B6C1F-9698-4494-86DE-6E916B0B9F02}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testengine.module.powerautomate.tests", "testengine.module.powerautomate.tests\testengine.module.powerautomate.tests.csproj", "{A26B5B6A-0F22-4681-BBD1-7606A3DAD972}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.PowerApps.TestEngine.Tests", "..\PowerApps-TestEngine\src\Microsoft.PowerApps.TestEngine.Tests\Microsoft.PowerApps.TestEngine.Tests.csproj", "{EA890D35-2E7D-4957-85F7-ED244EF80D76}"
@@ -22,6 +20,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testengine.provider.canvas", "..\PowerApps-TestEngine\src\testengine.provider.canvas\testengine.provider.canvas.csproj", "{AC20A452-4B15-4700-AD35-43F559C5ACE9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.PowerApps.TestEngine", "..\PowerApps-TestEngine\src\Microsoft.PowerApps.TestEngine\Microsoft.PowerApps.TestEngine.csproj", "{823F7E9D-CFC2-4428-AF63-1153B073185A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testengine.user.local", "testengine.user.local\testengine.user.local.csproj", "{DB688D64-71FD-4DB9-97E6-623E578057D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testengine.module.powerautomate", "testengine.module.powerautomate\testengine.module.powerautomate.csproj", "{763968C4-515F-4C3F-939E-CFEC14273517}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +51,6 @@ Global
 		{C49C64C5-9CEC-4FF0-9E3E-89EA9F4E9C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C49C64C5-9CEC-4FF0-9E3E-89EA9F4E9C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C49C64C5-9CEC-4FF0-9E3E-89EA9F4E9C67}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C5B6C1F-9698-4494-86DE-6E916B0B9F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C5B6C1F-9698-4494-86DE-6E916B0B9F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C5B6C1F-9698-4494-86DE-6E916B0B9F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C5B6C1F-9698-4494-86DE-6E916B0B9F02}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A26B5B6A-0F22-4681-BBD1-7606A3DAD972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A26B5B6A-0F22-4681-BBD1-7606A3DAD972}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A26B5B6A-0F22-4681-BBD1-7606A3DAD972}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +67,14 @@ Global
 		{823F7E9D-CFC2-4428-AF63-1153B073185A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{823F7E9D-CFC2-4428-AF63-1153B073185A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{823F7E9D-CFC2-4428-AF63-1153B073185A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB688D64-71FD-4DB9-97E6-623E578057D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB688D64-71FD-4DB9-97E6-623E578057D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB688D64-71FD-4DB9-97E6-623E578057D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB688D64-71FD-4DB9-97E6-623E578057D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{763968C4-515F-4C3F-939E-CFEC14273517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{763968C4-515F-4C3F-939E-CFEC14273517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{763968C4-515F-4C3F-939E-CFEC14273517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{763968C4-515F-4C3F-939E-CFEC14273517}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\PowerAutomateMockUp\PowerAutomateMockUp\PowerAutomateMockUp.csproj" />
-    <ProjectReference Include="..\testengineine.module.powerautomate\testengineine.module.powerautomate.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,6 +2,8 @@
 
 The Power Apps Test Engine provider for Power Automate enables you to perform unit testing of Power Automate Cloud flow workflows.
 
+## Architecture
+
 ![Power Automate Architecture diagram applied to Unit testing of cloud flows using extensions](./media/TestEngineOverview-PowerAutomate.svg)
 
 ## User Authentication

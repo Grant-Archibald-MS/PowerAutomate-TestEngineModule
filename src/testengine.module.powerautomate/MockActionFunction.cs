@@ -22,7 +22,8 @@ namespace testengine.module
         private readonly ILogger _logger;
 
         public MockActionFunction(PowerAutomateTestState state, ILogger logger)
-            : base("MockAction", FormulaType.String, FormulaType.Boolean, FormulaType.Blank)
+            // Function name, start with return type then arguments
+            : base("MockAction", FormulaType.Blank, FormulaType.String, FormulaType.Boolean)
         {
             _state = state;
             _logger = logger;

@@ -7,19 +7,16 @@ testSuite:
   testCases:
     - testCaseName: Sample
       testSteps: |
-        = // Arrange
-          MockAction("Get_a_record_-_Valid_Id", true);
+        = MockAction("Get_a_record_-_Valid_Id", true);
           MockAction("Update_Account_-_Invalid_Id", true);
           BuildTest();
           OpenWorkflow("PowerAutomateMockUpSampleFlow.json");
-          // Act
-          TriggerWorkflow({body:{name: "Alice Bob", accountId: GUID()}})
-          // Assert
-          Assert("RanToCompletion", Result.TaskStatus)
-          Verify("Get_a_record_-_Valid_Id")
+          TriggerWorkflow("{body:{name: 'Alice Bob', accountId: 1}}")
 testSettings:
   locale: "en-US"
   recordVideo: true
+  extensionModules:
+    enable: true
   browserConfigurations:
     - browser: Chromium
 
