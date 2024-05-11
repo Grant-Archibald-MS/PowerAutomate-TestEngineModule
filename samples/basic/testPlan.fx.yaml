@@ -13,10 +13,11 @@ testSuite:
           BuildTest();
           OpenWorkflow("PowerAutomateMockUpSampleFlow.json");
           // Act
-          TriggerWorkflow({body:{name: "Alice Bob", accountId: GUID()}})
+          Set(Result,TriggerWorkflow({body:{name: "Alice Bob", accountId: GUID()}}));
           // Assert
           Assert("RanToCompletion", Result.TaskStatus)
           Verify("Get_a_record_-_Valid_Id")
+          
 testSettings:
   locale: "en-US"
   recordVideo: true
