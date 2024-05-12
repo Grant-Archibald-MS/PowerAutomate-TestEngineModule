@@ -7,7 +7,7 @@ testSuite:
   testCases:
     - testCaseName: Sample
       testSteps: |
-        = MockAction("Get_a_record_-_Valid_Id", true);
+        = MockAction("Get_a_record_-_Valid_Id", true, "{'name': 'Alice Bob', 'accountId': '=GUID(''00000000-0000-0000-0000-000000000000'')'}");
           MockAction("Update_Account_-_Invalid_Id", true);
           BuildTest();
           OpenWorkflow("PowerAutomateMockUpSampleFlow.json");
