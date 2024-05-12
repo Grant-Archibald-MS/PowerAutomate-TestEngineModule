@@ -22,14 +22,4 @@ Create a new provider that makes use of knowledge of the structure of the work f
 
 ## Power Automate Extensions
 
-### Open Workflow
-
-The `OpenWorkflow()` function can be used to load workflow from url or a local file
-
-### Mock Action
-
-The `MockAction()` function can be used to mock the outcomes and data for a workflow action
-
-## Trigger Workflow
-
-The `TriggerWorkflow()` function allows the cloud flow to be triggered with optional data
+You can read more on the specific [PowerFX](./PowerFX/README.md) that enable unit test of Power Automate Cloud flows.
