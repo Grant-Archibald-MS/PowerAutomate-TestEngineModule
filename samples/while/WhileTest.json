@@ -1,0 +1,80 @@
+{
+  "properties": {
+    "connectionReferences": {},
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "34746f47-0144-4efd-9cc3-79cf0f30bb1b"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "d1393c8b-876d-4395-a712-6c44133f384c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Counter",
+                "type": "integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Do_until": {
+          "actions": {
+            "Increment_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "33333ac5-240b-460b-bbb3-31d200b748ff"
+              },
+              "type": "IncrementVariable",
+              "inputs": {
+                "name": "Counter",
+                "value": 1
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "expression": "@equals(variables('Counter'), 10)",
+          "limit": {
+            "count": 60,
+            "timeout": "PT1H"
+          },
+          "metadata": {
+            "operationMetadataId": "0e0fa85e-37d8-4a30-8a2b-2a702c23634f"
+          },
+          "type": "Until"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

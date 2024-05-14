@@ -1,25 +1,24 @@
 testSuite:
-  testSuiteName: Power Automate For Each Unit Test
+  testSuiteName: Power Automate If logic Unit Test
   testSuiteDescription: Verifies that you can trigger and mock actions
   persona: User1
   appLogicalName: NA
 
   testCases:
-    - testCaseName: Validate can loop over array 
+    - testCaseName: Validate variables and control logic using if
       testSteps: |
         = MockAction("Initialize_variable", true);
-          MockAction("Initialize_variable_1", true);
-          MockAction("Apply_to_each", true);
+          MockAction("Set_variable", true);
           BuildTest();
-          OpenWorkflow("LoopTest.json");
+          OpenWorkflow("IfTest.json");
           With( {
               results: TriggerWorkflow("{}")
             },
             With({ first:First(results) }, 
-              Assert(6 = first.TotalNumberOfExecutedActions, "Total action mismatch")
+              Assert(3 = first.TotalNumberOfExecutedActions, "Total action mismatch")
             )
           );
-          Assert(Value == 3);
+          Assert(Value == "Match");
 testSettings:
   locale: "en-US"
   recordVideo: false

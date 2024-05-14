@@ -1,0 +1,71 @@
+{
+  "properties": {
+    "connectionReferences": {},
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "91727698-6e98-4319-a7f9-ee464b0e33a5"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Set_text": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "c49951b6-4b4a-4145-8a79-7d8a04cc22ce"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Text",
+                "type": "string",
+                "value": "Hello World"
+              }
+            ]
+          }
+        },
+        "Length_of_text": {
+          "runAfter": {
+            "Set_text": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2dcfb6f2-0513-41fc-8633-adaf713f590b"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Length",
+                "type": "integer",
+                "value": "@length(variables('Text'))"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

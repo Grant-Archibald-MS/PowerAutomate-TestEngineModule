@@ -1,0 +1,96 @@
+{
+  "properties": {
+    "connectionReferences": {},
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "afe31e0d-8eb6-47fa-b3e8-c0ce98b9082e"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Condition": {
+          "actions": {
+            "Set_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2738be11-77aa-4177-bb1c-9bc95876d45c"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Value",
+                "value": "Match"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Set_variable_2": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "a04f469c-795d-4ade-970a-efcaace8fc0e"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "Value",
+                  "value": "No Match"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@variables('Value')",
+              "Unknown"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f4c9c286-1f59-47c0-a41f-49228f152ee6"
+          },
+          "type": "If"
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "05ad1038-c9d4-4fdd-a0c4-fd3aa0f99d75"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Value",
+                "type": "string",
+                "value": "Unknown"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}
