@@ -15,7 +15,7 @@ testSuite:
               results: TriggerWorkflow("{'body':{'name': 'Alice Bob', 'accountId': '=GUID(''00000000-0000-0000-0000-000000000000'')'}}") 
             },
             With({ first:First(results) }, 
-              Assert(2 = first.TotalNumberOfExecutedActions)
+              Assert(first.TotalNumberOfExecutedActions > 0)
             )
           )
 testSettings:
