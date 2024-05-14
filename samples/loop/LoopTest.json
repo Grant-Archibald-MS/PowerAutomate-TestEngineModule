@@ -1,0 +1,100 @@
+{
+    "properties": {
+      "connectionReferences": {},
+      "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "contentVersion": "undefined",
+        "parameters": {
+          "$authentication": {
+            "defaultValue": {},
+            "type": "SecureObject"
+          }
+        },
+        "triggers": {
+          "manual": {
+            "metadata": {
+              "operationMetadataId": "8f811f5c-5d20-4210-b69b-f136f7a6bb03"
+            },
+            "type": "Request",
+            "kind": "Button",
+            "inputs": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
+              }
+            }
+          }
+        },
+        "actions": {
+          "Initialize_variable": {
+            "runAfter": {},
+            "metadata": {
+              "operationMetadataId": "86f3ba6d-d736-4869-bcbc-257ad7bdd62c"
+            },
+            "type": "InitializeVariable",
+            "inputs": {
+              "variables": [
+                {
+                  "name": "Counter",
+                  "type": "integer",
+                  "value": 0
+                }
+              ]
+            }
+          },
+          "Initialize_variable_1": {
+            "runAfter": {
+              "Initialize_variable": [
+                "Succeeded"
+              ]
+            },
+            "metadata": {
+              "operationMetadataId": "454e4c84-1b8f-4558-afe4-1042af11c3e5"
+            },
+            "type": "InitializeVariable",
+            "inputs": {
+              "variables": [
+                {
+                  "name": "values",
+                  "type": "array",
+                  "value": [
+                    "A",
+                    "B",
+                    "C"
+                  ]
+                }
+              ]
+            }
+          },
+          "Apply_to_each": {
+            "foreach": "@variables('values')",
+            "actions": {
+              "Increment_variable": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "8c312043-009f-4d47-a4d2-30410919f9bb"
+                },
+                "type": "IncrementVariable",
+                "inputs": {
+                  "name": "Counter",
+                  "value": 1
+                }
+              }
+            },
+            "runAfter": {
+              "Initialize_variable_1": [
+                "Succeeded"
+              ]
+            },
+            "metadata": {
+              "operationMetadataId": "5ebb4d22-9769-47b9-a380-f015f38efc53"
+            },
+            "type": "Foreach"
+          }
+        }
+      },
+      "templateName": null
+    },
+    "schemaVersion": "1.0.0.0"
+  }

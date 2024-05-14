@@ -1,0 +1,35 @@
+testSuite:
+  testSuiteName: Power Automate For Each Unit Test
+  testSuiteDescription: Verifies that you can trigger and mock actions
+  persona: User1
+  appLogicalName: NA
+
+  testCases:
+    - testCaseName: Validate can loop over array 
+      testSteps: |
+        = MockAction("Initialize_variable", true);
+          MockAction("Initialize_variable_1", true);
+          MockAction("Apply_to_each", true);
+          BuildTest();
+          OpenWorkflow("LoopTest.json");
+          With( {
+              results: TriggerWorkflow("{}")
+            },
+            With({ first:First(results) }, 
+              Assert(6 = first.TotalNumberOfExecutedActions, "Total action mismatch")
+            )
+          )
+          
+testSettings:
+  locale: "en-US"
+  recordVideo: false
+  extensionModules:
+    enable: true
+  browserConfigurations:
+    - browser: Chromium
+
+environmentVariables:
+  users:
+    - personaName: User1
+      emailKey: None
+      passwordKey: None

@@ -64,7 +64,8 @@ public class TriggerWorkflowTest
         var result = trigger.Execute(FormulaValue.New(json));
 
         // Assert
-        Assert.Equal(expectedActionCount, result.GetField("NumberOfExecutedActions").AsDouble());
+        var first = result.Rows.First().Value;
+        Assert.Equal(expectedActionCount, first.GetField("TotalNumberOfExecutedActions").AsDouble());
         var outputs = parserState.GetTriggerOutputs();
 
         var outputData = outputs.AsDict();

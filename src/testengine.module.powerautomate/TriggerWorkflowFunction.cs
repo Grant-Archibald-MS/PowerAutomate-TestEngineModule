@@ -22,15 +22,24 @@ namespace testengine.module
 
         public Func<string,string> GetFileContent = name => File.ReadAllText(name);
 
+        private static NamedFormulaType TotalNumberOfExecutedActions = new NamedFormulaType("TotalNumberOfExecutedActions", FormulaType.Number);
+        private static NamedFormulaType Name = new NamedFormulaType("Name", FormulaType.String);
+
+        private static RecordType WorkflowResult = RecordType.Empty()
+            .Add(TotalNumberOfExecutedActions)
+            .Add(Name);
+
         public TriggerWorkflowFunction(PowerAutomateTestState state, ILogger logger)
             // Function name, start with return type then arguments
-            : base("TriggerWorkflow", RecordType.Empty().Add(new NamedFormulaType("NumberOfExecutedActions", FormulaType.Number)), StringType.String)
+            : base("TriggerWorkflow", TableType.Empty()
+                  .Add(TotalNumberOfExecutedActions)
+                  .Add(Name), StringType.String)
         {
             _state = state;
             _logger = logger;
         }
 
-        public RecordValue Execute(StringValue json)
+        public TableValue Execute(StringValue json)
         {
             _logger.LogInformation("------------------------------\n\n" +
                 "Executing OpenWorkflow function.");
@@ -41,9 +50,20 @@ namespace testengine.module
 
             _logger.LogInformation("Successfully finished executing TriggerWorkflow function.");
 
-            return RecordValue.NewRecordFromFields(
-                new NamedValue("NumberOfExecutedActions", FormulaValue.New(result?.NumberOfExecutedActions))
-                );
+            var results = new List<RecordValue>();
+
+            if (result?.ActionStates != null)
+            {
+                foreach (var state in result.ActionStates)
+                {
+                    results.Add(RecordValue.NewRecordFromFields(
+                       new NamedValue("TotalNumberOfExecutedActions", FormulaValue.New(result?.NumberOfExecutedActions)),
+                       new NamedValue("Name", FormulaValue.New(state.Key))
+                   )); ;
+                }
+            }
+           
+            return TableValue.NewTable(WorkflowResult, results);
         }
     }
 }

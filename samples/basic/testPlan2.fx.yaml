@@ -14,7 +14,9 @@ testSuite:
           With( {
               results: TriggerWorkflow("{'body':{'name': 'Alice Bob', 'accountId': '=GUID(''00000000-0000-0000-0000-000000000000'')'}}") 
             },
-            Assert(2, results.NumberOfExecutedActions)
+            With({ first:First(results) }, 
+              Assert(2 = first.TotalNumberOfExecutedActions)
+            )
           )
 testSettings:
   locale: "en-US"
